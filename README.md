@@ -1,134 +1,244 @@
-# 陳銓富 (Quan-Fu Chen)
+# 🚀 Dual-Stage RAG for E-Commerce Customer Service
 
-## AI Application Engineer | Generative AI | RAG | Enterprise Knowledge Base Solutions
-
-具備人工智慧碩士背景，專注於生成式 AI、RAG（Retrieval-Augmented Generation）、企業知識庫與智慧客服系統開發。
-
-我擅長從企業實際問題出發，設計並落地 AI 解決方案，而不只是研究模型本身。
-
----
-
-## 🎓 Education
-
-- Master of Artificial Intelligence
-- Graduate Research in LLM and Retrieval-Augmented Generation
+> Master Thesis Project  
+> National Yunlin University of Science and Technology  
+> Graduate Institute of Artificial Intelligence  
+> Author: Quan-Fu Chen
 
 ---
 
-## 🚀 Featured Projects
+## 📖 Overview
 
-### 1️⃣ Dual-Stage RAG for E-Commerce Customer Service
+This project proposes a **Dual-Stage Retrieval-Augmented Generation (RAG)** framework for Chinese E-commerce Customer Service.
 
-基於任務分解之雙階段 RAG 電商客服系統
+The system addresses the limitations of traditional keyword retrieval and single-stage semantic retrieval by combining:
 
-#### Architecture
+- BM25 Sparse Retrieval
+- BGE-M3 Dense Retrieval
+- Reciprocal Rank Fusion (RRF)
+- BGE-Reranker-v2-m3
+- Qwen2.5 Large Language Model
 
-BM25 → BGE-M3 → RRF → BGE-Reranker → Qwen2.5
+The framework improves retrieval accuracy, response reliability, and reduces hallucination in customer service scenarios.
 
-#### Technologies
+---
 
-- Python
-- BM25
-- BGE-M3
-- RRF
-- BGE-Reranker
-- Qwen2.5
-- Flask
-- Streamlit
+## 🏆 Thesis Contribution
 
-#### Evaluation Results
+### Contribution 1
+
+A Dual-Stage Retrieval Architecture combining sparse and dense retrieval methods for Chinese E-commerce customer service.
+
+### Contribution 2
+
+A complete RAG evaluation framework including:
+
+- Hit@5
+- MRR
+- NDCG@5
+- Coverage
+- Hallucination Rate
+- Latency Analysis
+
+### Contribution 3
+
+A practical AI customer service system deployable on CPU-only environments.
+
+---
+
+# 🏗 System Architecture
+
+```text
+User Query
+     │
+     ▼
+┌─────────────────┐
+│ BM25 Retrieval  │
+└─────────────────┘
+     │
+     ▼
+┌─────────────────┐
+│ BGE-M3 Dense    │
+│ Retrieval       │
+└─────────────────┘
+     │
+     ▼
+┌─────────────────┐
+│ RRF Fusion      │
+└─────────────────┘
+     │
+     ▼
+┌─────────────────┐
+│ BGE-Reranker    │
+└─────────────────┘
+     │
+     ▼
+┌─────────────────┐
+│ Qwen2.5 LLM     │
+└─────────────────┘
+     │
+     ▼
+Generated Answer
+```
+
+---
+
+# 🔄 RAG Pipeline
+
+```text
+Customer Question
+        │
+        ▼
+BM25 Sparse Retrieval
+        │
+        ▼
+BGE-M3 Dense Retrieval
+        │
+        ▼
+Reciprocal Rank Fusion
+        │
+        ▼
+BGE-Reranker-v2-m3
+        │
+        ▼
+Qwen2.5 Generation
+        │
+        ▼
+Final Answer
+```
+
+---
+
+# 📊 Experimental Results
+
+Dataset:
+
+- 115 Evaluation Questions
+- Chinese E-commerce FAQ Knowledge Base
 
 | Metric | Result |
 |----------|----------|
-| Hit@5 | 93.2% |
-| MRR | 0.94 |
-| NDCG@5 | 0.91 |
+| Hit@5 | 1.0000 |
+| MRR | 0.9401 |
+| NDCG@5 | 0.9125 |
+| Coverage | 1.0000 |
+| Average Latency | 188.66 ms |
+| P95 Latency | 217.64 ms |
 
 ---
 
-### 2️⃣ Thesis Guardian V2
+# 🧪 Technology Stack
 
-論文保全與品質檢查系統
-
-#### Features
-
-- Word 文件解析
-- 章節結構檢查
-- 圖表引用檢查
-- 文獻引用檢查
-- Rule Engine
-- Interactive HTML Dashboard
-
-#### Technologies
+## Backend
 
 - Python
-- python-docx
-- Rule Engine
-- HTML Report
-- Streamlit
-
----
-
-### 3️⃣ Enterprise Knowledge Base Solutions
-
-企業知識庫與文件查詢系統
-
-#### Applications
-
-- FAQ Chatbot
-- SOP Search
-- Knowledge Retrieval
-- Internal Document Assistant
-
----
-
-## 💻 Technical Skills
-
-### Programming
-
-- Python
-- SQL
-
-### AI / LLM
-
-- RAG
-- BM25
-- BGE-M3
-- RRF
-- BGE-Reranker
-- Qwen2.5
-- Ollama
-
-### Frameworks
-
 - Flask
 - Streamlit
 
-### Tools
+## Retrieval
 
-- Git
-- GitHub
-- VS Code
+- BM25
+- BGE-M3
+- RRF
+
+## Re-ranking
+
+- BGE-Reranker-v2-m3
+
+## Generation
+
+- Qwen2.5
+
+## Vector Search
+
+- FAISS
+
+## Data Processing
+
+- Pandas
+- NumPy
+- Jieba
 
 ---
 
-## 🎯 Career Objective
+# 📂 Project Structure
 
-Seeking opportunities in:
-
-- AI Application Engineer
-- Generative AI Engineer
-- AI Solution Engineer
-- Enterprise AI Consultant
-- Knowledge Base Engineer
+```text
+3fm/
+│
+├── knowledge_base/
+├── rag/
+│   ├── retrieval/
+│   ├── reranker/
+│   ├── generator/
+│   └── utils/
+│
+├── routes/
+├── static/
+├── templates/
+├── web/
+│
+├── app.py
+├── app_streamlit_thesis.py
+└── README.md
+```
 
 ---
 
-## 📫 Contact
+# 💡 Features
 
-- Email: 0963118770@gmail.com
-- GitHub: https://github.com/quanfu2026
+- Dual-Stage Retrieval
+- Chinese Semantic Search
+- Hybrid Retrieval
+- Re-ranking Optimization
+- Hallucination Reduction
+- Evaluation Dashboard
+- Streamlit Monitoring Interface
 
 ---
 
-> "Solving real business problems with AI is more important than simply building AI models."
+# 🖥 Demo
+
+## Customer Service Query
+
+```text
+Q:
+如何申請退貨？
+
+A:
+您可於訂單完成後七日內申請退貨，
+系統將引導您完成退貨流程...
+```
+
+---
+
+# 📈 Research Keywords
+
+- Retrieval-Augmented Generation (RAG)
+- Large Language Models (LLM)
+- Information Retrieval
+- BM25
+- BGE-M3
+- Reranker
+- Qwen2.5
+- E-Commerce AI
+- Customer Service Automation
+
+---
+
+# 👨‍💻 Author
+
+**Quan-Fu Chen**
+
+AI Application Engineer  
+Generative AI Developer  
+RAG System Developer
+
+GitHub:
+https://github.com/quanfu2026
+
+---
+
+# 📜 License
+
+MIT License
